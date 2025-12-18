@@ -1,6 +1,7 @@
 package Bank;
 
-import java.util.HashMap;
+import java.util.*;
+
 import Accounts.BankAccount;
 
 public class Bank {
@@ -15,19 +16,39 @@ public class Bank {
     }
 
     public void addAccount(BankAccount account) {
-
+        accounts.put(account.getAccountNumber(), account);
     }
 
-    public void findAccount(BankAccount account) {
-
+    public BankAccount findAccount(BankAccount account) {
+        return accounts.get(account.getAccountNumber());
     }
 
-    public void getTotalBalance(BankAccount account) {
+    public double getTotalBalance(BankAccount account) {
+        double total = 0;
 
+        Set<Integer> set = accounts.keySet();
+        Iterator<Integer> it = set.iterator();
+        while(it.hasNext()) {
+            total += accounts.get(it.next()).getBalance();
+        }
+
+        return total;
     }
 
-    public void getAccountsWithBalanceGreaterThan(double amount) {
+    public ArrayList<BankAccount> getAccountsWithBalanceGreaterThan(double amount) {
+        ArrayList<BankAccount> list = new ArrayList<>();
+        BankAccount buffer;
 
+        Set<Integer> set = accounts.keySet();
+        Iterator<Integer> it = set.iterator();
+        while(it.hasNext()) {
+            buffer = accounts.get(it.next());
+            if(buffer.getBalance() > amount) {
+                list.add(buffer);
+            }
+        }
+
+        return list;
     }
 
 }
