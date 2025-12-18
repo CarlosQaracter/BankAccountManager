@@ -1,5 +1,7 @@
 package Accounts;
 
+import Exceptions.InsufficientFundsException;
+
 public class BankAccount {
 
     int accountNumber;
@@ -28,17 +30,23 @@ public class BankAccount {
         balance += amount;
     }
 
-    public void withdraw(double amount) {
-        balance -= amount;
+    public void withdraw(double amount) throws InsufficientFundsException {
+        if(balance < amount) {
+            throw new InsufficientFundsException("Insufficient funds to commit the operation.");
+        } else {
+            balance -= amount;
+        }
     }
 
-    public void transferTo(BankAccount account, double amount) {
+    public void transferTo(BankAccount account, double amount) throws InsufficientFundsException {
         this.withdraw(amount);
         account.deposit(amount);
     }
 
     public String getAccountInfo() {
-        return "Information of the account *" + accountNumber + "*:\nAccount holder = " + accountHolder + ".\nBalance = " + " €.";
+        return "Information of the account *" + accountNumber + "*:\n" +
+                "Account holder = " + accountHolder + ".\n" +
+                "Balance = " + " €.";
     }
 
 }
