@@ -44,7 +44,9 @@ public class BankAccount {
     }
 
     public String getAccountInfo() {
-        return "Information of the account *" + accountNumber + "*:\nAccount holder = " + accountHolder + ".\nBalance = " + " €.";
+        return "Information of the account *" + accountNumber + "*:\n" +
+                "Account holder = " + accountHolder + ".\n" +
+                "Balance = " + " €.";
     }
 
 }
