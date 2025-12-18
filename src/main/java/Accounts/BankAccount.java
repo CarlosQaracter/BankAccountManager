@@ -49,4 +49,12 @@ public class BankAccount {
                 "Balance = " + " €.";
     }
 
+
+    public int getAccountNumber() {
+        return  accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
 }
