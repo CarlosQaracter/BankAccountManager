@@ -47,4 +47,12 @@ public class BankAccount {
         return "Information of the account *" + accountNumber + "*:\nAccount holder = " + accountHolder + ".\nBalance = " + " €.";
     }
 
+
+    public int getAccountNumber() {
+        return  accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
 }
